@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AGSR.Client": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

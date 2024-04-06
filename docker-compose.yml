@@ -1,0 +1,40 @@
+version: '3.4'
+
+services:
+  mssql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql-server
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "yourStrong(!)Password"
+    ports:
+      - "1433:1433" 
+ 
+  agsr.webapi:
+    image: ${DOCKER_REGISTRY-}agsr-webapi
+    container_name: agsr-webapi
+    build:
+      context: .
+      dockerfile: AGSR.WebApi/Dockerfile
+    ports:
+      - "5000:80"
+      - "5001:443"
+    environment:
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      ASPNETCORE_HTTPS_PORT: 443
+    depends_on:
+      - mssql-server
+  
+  agsr.client:
+    image: ${DOCKER_REGISTRY-}agsr-client
+    container_name: agsr-client
+    build:
+      context: .
+      dockerfile: AGSR.Client/Dockerfile 
+    environment:
+      ASPNETCORE_Kestrel__Certificates__Default__Password: mypass123
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /https/aspnetapp.pfx
+    volumes:
+        - ./AGSR.WebApi/https/aspnetapp.pfx:/https/aspnetapp.pfx:ro
+    depends_on:
+      - agsr.webapi
