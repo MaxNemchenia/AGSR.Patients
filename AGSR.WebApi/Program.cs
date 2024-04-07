@@ -3,6 +3,7 @@ using AGSR.WebApi.Domain.Extensions;
 using AGSR.WebApi.Kernel.Extensions;
 using AGSR.WebApi.Infrustructure.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +14,12 @@ builder.Services.AddRepositories();
 builder.Services.AddAutoMapperProfiles();
 builder.Services.AddInfrustructureServices();
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
