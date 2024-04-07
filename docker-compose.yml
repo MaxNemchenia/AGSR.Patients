@@ -5,8 +5,8 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: mssql-server
     environment:
-      ACCEPT_EULA: "Y"
-      SA_PASSWORD: "yourStrong(!)Password"
+      ACCEPT_EULA: Y
+      SA_PASSWORD: yourStrong(!)Password
     ports:
       - "1433:1433" 
  
@@ -22,6 +22,10 @@ services:
     environment:
       ASPNETCORE_URLS: https://+:443;http://+:80
       ASPNETCORE_HTTPS_PORT: 443
+      MSSQL_SERVER: mssql-server
+      MSSQL_DATABASE: AGSR.PatientDb
+      MSSQL_USER: sa
+      MSSQL_PASSWORD: yourStrong(!)Password
     depends_on:
       - mssql-server
   
