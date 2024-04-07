@@ -1,29 +1,53 @@
-﻿using System.Net;
-using System.Net.Http;
-using System.Net.Security;
-using System.Security.Cryptography.X509Certificates;
+﻿using AGSR.Patients.ServiceContracts.Dtos.Patient;
+using AGSR.Patients.ServiceContracts.Enums;
+using System.Text;
+using System.Text.Json;
 
-string apiUrl = $"http://172.24.0.3:80/WeatherForecast";
+Console.WriteLine("Initiating API request...");
 
-using (var httpClientHandler = new HttpClientHandler())
+var url = Environment.GetEnvironmentVariable("PATIENTS_API_URL", EnvironmentVariableTarget.Process);
+var endpoint = "/Patient/add-batch";
+var uri = new Uri(url + endpoint);
+
+var patients = GeneratePatients();
+var patientsJson = JsonSerializer.Serialize(patients);
+
+using var httpClientHandler = new HttpClientHandler();
+
+//was used here to bypass the default certificate validation process.
+httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) =>
 {
-    httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) =>
-    {
-        return true;
-    };
+    return true;
+};
 
-    using (var httpClient = new HttpClient(httpClientHandler))
-    {
-        var response = await httpClient.GetAsync(apiUrl);
+using var httpClient = new HttpClient(httpClientHandler);
+Console.WriteLine("Sending API request...");
+var response = await SendRequestAsync(httpClient, patientsJson, uri);
+Console.WriteLine($"Request sent to: {uri}");
+Console.WriteLine($"Response status: {response.StatusCode}");
+Console.WriteLine("API request completed.");
 
-        if (response.IsSuccessStatusCode)
-        {
-            string responseBody = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(responseBody);
-        }
-        else
-        {
-            Console.WriteLine("An error occurred: " + response.StatusCode);
-        }
-    }
+Task<HttpResponseMessage> SendRequestAsync(HttpClient httpClient, string json, Uri uri)
+{
+
+    var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+
+    return httpClient.PostAsync(uri, httpContent);
 }
+
+static IEnumerable<PatientDto> GeneratePatients()
+    => Enumerable.Range(1, 100).Select(
+        x => new PatientDto()
+        {
+            Name = new PatientName()
+            {
+                Id = Guid.NewGuid(),
+                Use = "official",
+                Family = $"surname{x}",
+                Given = new List<string>() { $"Name{x}", $"FatherName{x}" },
+            },
+            Gender = Gender.Other,
+            BirthDate = DateTime.UtcNow,
+            Active = true,
+        })
+        .ToList();
