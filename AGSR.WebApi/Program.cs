@@ -1,6 +1,7 @@
 ﻿using AGSR.WebApi.Domain.Context;
 using AGSR.WebApi.Domain.Extensions;
 using AGSR.WebApi.Kernel.Extensions;
+using AGSR.WebApi.Infrustructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddKernelServices();
 builder.Services.AddConfigDbContext();
 builder.Services.AddRepositories();
+builder.Services.AddAutoMapperProfiles();
+builder.Services.AddInfrustructureServices();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
