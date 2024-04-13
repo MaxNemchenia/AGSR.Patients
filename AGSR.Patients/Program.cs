@@ -1,7 +1,7 @@
 ﻿using AGSR.Patients.Infrustructure.Database.Context;
 using AGSR.Patients.Infrustructure.Database.Extensions;
-using AGSR.Patients.Kernel.Extensions;
 using AGSR.Patients.Infrustructure.Extensions;
+using AGSR.Patients.Kernel.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -13,6 +13,9 @@ builder.Services.AddConfigDbContext();
 builder.Services.AddRepositories();
 builder.Services.AddAutoMapperProfiles();
 builder.Services.AddInfrustructureServices();
+builder.Services.AddParsers();
+builder.Services.AddValidators();
+builder.Services.AddBuilders();
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
