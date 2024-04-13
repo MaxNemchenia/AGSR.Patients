@@ -7,7 +7,7 @@
     <ProjectGuid>ba82423e-39e6-4988-821f-40eab52d9886</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>agsr.webapi</DockerServiceName>
+    <DockerServiceName>AGSR.Patients</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

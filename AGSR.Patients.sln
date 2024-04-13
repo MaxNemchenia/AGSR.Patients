@@ -3,19 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGSR.WebApi", "AGSR.WebApi\AGSR.WebApi.csproj", "{A5A54DBB-F24B-4F7F-A941-23D557A87562}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGSR.Patients", "AGSR.Patients\AGSR.Patients.csproj", "{A5A54DBB-F24B-4F7F-A941-23D557A87562}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{BA82423E-39E6-4988-821F-40EAB52D9886}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGSR.Client", "AGSR.Client\AGSR.Client.csproj", "{352858BB-B748-4E96-B480-403BEC612B43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGSR.Patients.ServiceContracts", "AGSR.Patients.ServiceContracts\AGSR.Patients.ServiceContracts.csproj", "{9909FF1D-A0A9-4A6C-B086-CD31E97C2313}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGSR.Patients.ServiceContracts", "AGSR.Patients.ServiceContracts\AGSR.Patients.ServiceContracts.csproj", "{9909FF1D-A0A9-4A6C-B086-CD31E97C2313}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGSR.WebApi.Kernel", "AGSR.WebApi.Kernel\AGSR.WebApi.Kernel.csproj", "{5174EFE1-734E-4398-ADB6-2657DB093CA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGSR.Patients.Kernel", "AGSR.Patients.Kernel\AGSR.Patients.Kernel.csproj", "{5174EFE1-734E-4398-ADB6-2657DB093CA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGSR.WebApi.Domain", "AGSR.WebApi.Domain\AGSR.WebApi.Domain.csproj", "{A476BED9-1E72-4F3C-8903-1EA3F17A0B8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGSR.Patients.Domain", "AGSR.Patients.Domain\AGSR.Patients.Domain.csproj", "{A476BED9-1E72-4F3C-8903-1EA3F17A0B8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGSR.WebApi.Infrustructure", "AGSR.WebApi.Infrustructure\AGSR.WebApi.Infrustructure.csproj", "{B040C1C3-1806-432F-8B5F-37F985B8DF9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGSR.Patients.Infrustructure", "AGSR.Patients.Infrustructure\AGSR.Patients.Infrustructure.csproj", "{B040C1C3-1806-432F-8B5F-37F985B8DF9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{CDE4091C-4436-4DDE-8136-9F98B1D8357E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{EFDCC76D-AC2A-443C-9486-86FA2652BA37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrustructure", "Infrustructure", "{2F6031F7-1AE7-49B8-A651-8202B8ADBD3A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{C6137ADE-FA63-4AED-BDBA-8EB9404F7E13}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGSR.Patients.Infrustructure.Database", "AGSR.Patients.Infrustructure.Database\AGSR.Patients.Infrustructure.Database.csproj", "{7BBB09F4-43AC-43B8-8A5C-1E851533065A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGSR.Patients.Application", "AGSR.Patients.Application\AGSR.Patients.Application.csproj", "{4EB86653-FE9D-439F-B7DE-709B68C859BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,9 +63,25 @@ Global
 		{B040C1C3-1806-432F-8B5F-37F985B8DF9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B040C1C3-1806-432F-8B5F-37F985B8DF9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B040C1C3-1806-432F-8B5F-37F985B8DF9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BBB09F4-43AC-43B8-8A5C-1E851533065A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BBB09F4-43AC-43B8-8A5C-1E851533065A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BBB09F4-43AC-43B8-8A5C-1E851533065A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BBB09F4-43AC-43B8-8A5C-1E851533065A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EB86653-FE9D-439F-B7DE-709B68C859BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EB86653-FE9D-439F-B7DE-709B68C859BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EB86653-FE9D-439F-B7DE-709B68C859BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EB86653-FE9D-439F-B7DE-709B68C859BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A5A54DBB-F24B-4F7F-A941-23D557A87562} = {CDE4091C-4436-4DDE-8136-9F98B1D8357E}
+		{352858BB-B748-4E96-B480-403BEC612B43} = {CDE4091C-4436-4DDE-8136-9F98B1D8357E}
+		{A476BED9-1E72-4F3C-8903-1EA3F17A0B8A} = {EFDCC76D-AC2A-443C-9486-86FA2652BA37}
+		{B040C1C3-1806-432F-8B5F-37F985B8DF9E} = {2F6031F7-1AE7-49B8-A651-8202B8ADBD3A}
+		{7BBB09F4-43AC-43B8-8A5C-1E851533065A} = {2F6031F7-1AE7-49B8-A651-8202B8ADBD3A}
+		{4EB86653-FE9D-439F-B7DE-709B68C859BD} = {C6137ADE-FA63-4AED-BDBA-8EB9404F7E13}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5F74F7C-9D40-4732-92C0-7D1DCE8BD0C3}

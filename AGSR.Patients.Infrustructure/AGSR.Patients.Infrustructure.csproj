@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AGSR.Patients.Application\AGSR.Patients.Application.csproj" />
+    <ProjectReference Include="..\AGSR.Patients.Domain\AGSR.Patients.Domain.csproj" />
+    <ProjectReference Include="..\AGSR.Patients.Kernel\AGSR.Patients.Kernel.csproj" />
+    <ProjectReference Include="..\AGSR.Patients.ServiceContracts\AGSR.Patients.ServiceContracts.csproj" />
+  </ItemGroup>
+
+</Project>
