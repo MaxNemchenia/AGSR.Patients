@@ -1,5 +1,6 @@
-﻿using AGSR.Patients.ServiceContracts.Dtos.Patient;
+﻿using AGSR.Patients.Infrustructure.Requests;
 using AGSR.Patients.Infrustructure.Services.Interfaces;
+using AGSR.Patients.ServiceContracts.Dtos.Patient;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AGSR.Patients.Controllers;
@@ -120,6 +121,20 @@ public class PatientController : ControllerBase
         {
             return StatusCode(500, "An error occurred while deleting the patient.");
         }
+    }
+
+    [HttpGet]
+    [Route("search")]
+    public IActionResult Search([FromQuery] DateSearchRequest dateSearch)
+    {
+        if(!ModelState.IsValid)
+        {
+            return BadRequest();
+        }
+
+        var patients = _patientService.Search(dateSearch);
+
+        return Ok(patients);
     }
 
     private async Task<bool> PatientExists(Guid id)

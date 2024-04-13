@@ -1,4 +1,5 @@
-﻿using AGSR.Patients.ServiceContracts.Dtos.Patient;
+﻿using AGSR.Patients.Infrustructure.Requests;
+using AGSR.Patients.ServiceContracts.Dtos.Patient;
 
 namespace AGSR.Patients.Infrustructure.Services.Interfaces;
 
@@ -44,5 +45,12 @@ public interface IPatientService
     /// <param name="id">The ID of the patient to delete.</param>
     /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
     Task DeleteAsync(Guid id);
+
+    /// <summary>
+    /// Searche for patients based on the specified date search criteria.
+    /// </summary>
+    /// <param name="dateSearch">The date search criteria.</param>
+    /// <returns>Collection of PatientDto matching the search criteria.</returns>
+    IEnumerable<PatientDto> Search(DateSearchRequest dateSearch);
 }
 
