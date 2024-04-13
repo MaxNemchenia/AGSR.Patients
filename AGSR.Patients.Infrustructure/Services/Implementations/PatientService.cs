@@ -91,7 +91,8 @@ public class PatientService : IPatientService
                 DatePrefix.sa => patients.Where(patient => patient.BirthDate > searchModel.DatePeriod.EndDate),
                 DatePrefix.eb => patients.Where(patient => patient.BirthDate < searchModel.DatePeriod.StartDate),
                 DatePrefix.ap => patients.Where(patient
-                    => Math.Abs((patient.BirthDate - searchModel.DatePeriod.StartDate).TotalDays) <= 1),
+                    => (patient.BirthDate >= searchModel.DatePeriod.StartDate.AddDays(-1)
+                    && patient.BirthDate <= searchModel.DatePeriod.StartDate.AddDays(1))),
                 _ => throw new NotImplementedException($"Unsupported date prefix: {searchModel.Prefix}"),
             };
         }
