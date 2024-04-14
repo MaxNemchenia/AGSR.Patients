@@ -1,0 +1,337 @@
+{
+	"info": {
+		"_postman_id": "b5e8c9db-de6a-42d7-894e-6f187af7038a",
+		"name": "AGSR.Patients.Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34260127"
+	},
+	"item": [
+		{
+			"name": "Get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/Patient",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"Patient"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa5\",\r\n    \"use\": \"official\",\r\n    \"family\": \"Smith\",\r\n    \"given\": [\r\n      \"John\"  \r\n    ]\r\n  },\r\n  \"gender\": \"Male\",\r\n  \"birthDate\": \"2000-01-01\",\r\n  \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/Patient",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"Patient"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/Patient?Id=3fa85f64-5717-4562-b3fc-2c963f66afa6",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"Patient"
+					],
+					"query": [
+						{
+							"key": "Id",
+							"value": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostBatch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n  {\r\n    \"name\": {\r\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n      \"use\": \"official\",\r\n      \"family\": \"Johnson\",\r\n      \"given\": [\"Michael\"]\r\n    },\r\n    \"gender\": \"Male\",\r\n    \"birthDate\": \"1995-05-20\",\r\n    \"active\": true\r\n  },\r\n  {\r\n    \"name\": {\r\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afb7\",\r\n      \"use\": \"official\",\r\n      \"family\": \"Williams\",\r\n      \"given\": [\"Emily\"]\r\n    },\r\n    \"gender\": \"Female\",\r\n    \"birthDate\": \"1980-12-15\",\r\n    \"active\": true\r\n  },\r\n  {\r\n    \"name\": {\r\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afc8\",\r\n      \"use\": \"official\",\r\n      \"family\": \"Brown\",\r\n      \"given\": [\"Christopher\"]\r\n    },\r\n    \"gender\": \"Male\",\r\n    \"birthDate\": \"1972-09-10\",\r\n    \"active\": false\r\n  },\r\n  {\r\n    \"name\": {\r\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afd9\",\r\n      \"use\": \"official\",\r\n      \"family\": \"Davis\",\r\n      \"given\": [\"Emma\"]\r\n    },\r\n    \"gender\": \"Female\",\r\n    \"birthDate\": \"1999-08-25\",\r\n    \"active\": true\r\n  },\r\n  {\r\n    \"name\": {\r\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afea\",\r\n      \"use\": \"official\",\r\n      \"family\": \"Miller\",\r\n      \"given\": [\"Alexander\"]\r\n    },\r\n    \"gender\": \"Male\",\r\n    \"birthDate\": \"1985-04-30\",\r\n    \"active\": true\r\n  },\r\n  {\r\n    \"name\": {\r\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66affb\",\r\n      \"use\": \"official\",\r\n      \"family\": \"Wilson\",\r\n      \"given\": [\"Olivia\"]\r\n    },\r\n    \"gender\": \"Female\",\r\n    \"birthDate\": \"1978-02-12\",\r\n    \"active\": false\r\n  },\r\n  {\r\n    \"name\": {\r\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afcc\",\r\n      \"use\": \"official\",\r\n      \"family\": \"Anderson\",\r\n      \"given\": [\"William\"]\r\n    },\r\n    \"gender\": \"Male\",\r\n    \"birthDate\": \"1990-11-05\",\r\n    \"active\": true\r\n  },\r\n  {\r\n    \"name\": {\r\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afdd\",\r\n      \"use\": \"official\",\r\n      \"family\": \"Taylor\",\r\n      \"given\": [\"Sophia\"]\r\n    },\r\n    \"gender\": \"Female\",\r\n    \"birthDate\": \"2001-07-17\",\r\n    \"active\": true\r\n  },\r\n  {\r\n    \"name\": {\r\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afee\",\r\n      \"use\": \"official\",\r\n      \"family\": \"Thomas\",\r\n      \"given\": [\"James\"]\r\n    },\r\n    \"gender\": \"Male\",\r\n    \"birthDate\": \"1998-03-22\",\r\n    \"active\": false\r\n  },\r\n  {\r\n    \"name\": {\r\n      \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afff\",\r\n      \"use\": \"official\",\r\n      \"family\": \"Hernandez\",\r\n      \"given\": [\"Isabella\"]\r\n    },\r\n    \"gender\": \"Female\",\r\n    \"birthDate\": \"1987-06-08\",\r\n    \"active\": true\r\n  }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/Patient/add-batch",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"Patient",
+						"add-batch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa5\",\r\n    \"use\": \"official\",\r\n    \"family\": \"Smith\",\r\n    \"given\": [\r\n      \"John\"  \r\n    ]\r\n  },\r\n  \"gender\": \"Male\",\r\n  \"birthDate\": \"2000-01-01\",\r\n  \"active\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/Patient",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"Patient"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchByDateEQ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/Patient/search?Dates=eq1998",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"Patient",
+						"search"
+					],
+					"query": [
+						{
+							"key": "Dates",
+							"value": "eq1998"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchByDateGT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/Patient/search?Dates=gt1999-12-31T01:01",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"Patient",
+						"search"
+					],
+					"query": [
+						{
+							"key": "Dates",
+							"value": "gt1999-12-31T01:01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchByDateGE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/Patient/search?Dates=ge1999-08-25",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"Patient",
+						"search"
+					],
+					"query": [
+						{
+							"key": "Dates",
+							"value": "ge1999-08-25"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchByDateNE",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "SearchByDateLT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/Patient/search?Dates=lt1995-05-20",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"Patient",
+						"search"
+					],
+					"query": [
+						{
+							"key": "Dates",
+							"value": "lt1995-05-20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchByDateLE",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "SearchByDateSA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/Patient/search?Dates=sa2000",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"Patient",
+						"search"
+					],
+					"query": [
+						{
+							"key": "Dates",
+							"value": "sa2000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchByDateEB",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/Patient/search?Dates=eb1980-12-15",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"Patient",
+						"search"
+					],
+					"query": [
+						{
+							"key": "Dates",
+							"value": "eb1980-12-15"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchByDateAP",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/Patient/search?Dates=ap2001-07-17",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"Patient",
+						"search"
+					],
+					"query": [
+						{
+							"key": "Dates",
+							"value": "ap2001-07-17"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
