@@ -123,18 +123,24 @@ public class PatientController : ControllerBase
         }
     }
 
-    [HttpGet]
-    [Route("search")]
+    [HttpGet("search")]
     public IActionResult Search([FromQuery] DateSearchRequest dateSearch)
     {
-        if(!ModelState.IsValid)
+        try
         {
-            return BadRequest();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var patients = _patientService.Search(dateSearch);
+
+            return Ok(patients);
         }
-
-        var patients = _patientService.Search(dateSearch);
-
-        return Ok(patients);
+        catch (Exception)
+        {
+            return StatusCode(500, "An error occurred while search the patients.");
+        }
     }
 
     private async Task<bool> PatientExists(Guid id)
