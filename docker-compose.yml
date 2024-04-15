@@ -8,7 +8,7 @@ services:
       ACCEPT_EULA: Y
       SA_PASSWORD: ${MSSQL_SA_PASSWORD}
     ports:
-      - "1433:1433" 
+      - "1433:1433"
  
   AGSR.Patients:
     image: ${DOCKER_REGISTRY-}agsr-patients
@@ -22,12 +22,16 @@ services:
     environment:
       ASPNETCORE_URLS: https://+:443;http://+:80
       ASPNETCORE_HTTPS_PORT: 443
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /etc/ssl/certs/agsr_cert.pfx
+      ASPNETCORE_Kestrel__Certificates__Default__Password: ${SSL_CERTIFICATE_PASSWORD}
       MSSQL_SERVER: mssql-server
       MSSQL_DATABASE: AGSR.PatientDb
       MSSQL_USER: sa
       MSSQL_PASSWORD: ${MSSQL_SA_PASSWORD}
     depends_on:
       - mssql-server
+    volumes:
+      - ./Certificates:/etc/ssl/certs
   
   agsr.client:
     image: ${DOCKER_REGISTRY-}agsr-client

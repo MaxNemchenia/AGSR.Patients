@@ -21,11 +21,35 @@ httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, ch
 };
 
 using var httpClient = new HttpClient(httpClientHandler);
-Console.WriteLine("Sending API request...");
-var response = await SendRequestAsync(httpClient, patientsJson, uri);
-Console.WriteLine($"Request sent to: {uri}");
-Console.WriteLine($"Response status: {response.StatusCode}");
-Console.WriteLine("API request completed.");
+
+var maxAttempts = 5;
+
+for (int attempt = 1; attempt <= maxAttempts; attempt++)
+{
+    try
+    {
+        Console.WriteLine("Sending API request (Attempt #" + attempt + ")...");
+        var response = await SendRequestAsync(httpClient, patientsJson, uri);
+        Console.WriteLine($"Request sent to: {uri}");
+        Console.WriteLine($"Response status: {response.StatusCode}");
+        Console.WriteLine("API request completed.");
+
+        break;
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Attempt #{attempt} failed: {ex.Message}");
+        if (attempt < maxAttempts)
+        {
+            Console.WriteLine("Retrying...");
+            await Task.Delay(10000);
+        }
+        else
+        {
+            Console.WriteLine("Maximum attempts reached. API request unsuccessful.");
+        }
+    }
+}
 
 Task<HttpResponseMessage> SendRequestAsync(HttpClient httpClient, string json, Uri uri)
 {

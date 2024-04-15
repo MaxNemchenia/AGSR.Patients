@@ -1,11 +1,20 @@
 # AGSR.WebApi
 
 
-#Set database password in .env file
+#Set passwords in .env file
 
 Example .env file:
 MSSQL_SA_PASSWORD=yourStrong(!)Password
+SSL_CERTIFICATE_PASSWORD=12345
 
+# Generate ssl certificate
+
+1. Open a terminal and navigate to the root directory of the project.
+
+2. Run the following commands to generate certificate:
+set /p SSL_CERTIFICATE_PASSWORD=<.env
+dotnet dev-certs https -ep ./Certificates/agsr_cert.pfx -p %SSL_CERTIFICATE_PASSWORD%
+dotnet dev-certs https --trust
 
 ## Running with Docker Compose
 
