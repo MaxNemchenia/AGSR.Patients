@@ -12,7 +12,7 @@ SSL_CERTIFICATE_PASSWORD=12345
 1. Open a terminal and navigate to the root directory of the project.
 
 2. Run the following commands to generate certificate:
-set /p SSL_CERTIFICATE_PASSWORD=<.env
+for /f "tokens=2 delims==" %a in ('findstr "SSL_CERTIFICATE_PASSWORD=" .env') do set SSL_CERTIFICATE_PASSWORD=%a
 dotnet dev-certs https -ep ./Certificates/agsr_cert.pfx -p %SSL_CERTIFICATE_PASSWORD%
 dotnet dev-certs https --trust
 
